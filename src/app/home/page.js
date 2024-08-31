@@ -6,7 +6,7 @@ export default function Home() {
       <div className="flex justify-end w-full z-10 max-w-5xl">
         <div className="flex space-x-8">
           <a
-            href="/"
+            href="/home"
             className="text-lg font-semibold hover:text-gray-600 text-white"
           >
             Home
