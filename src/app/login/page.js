@@ -1,48 +1,17 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Login() {
   return (
-    <main className="flex min-h-screen flex-col p-24 bg-gradient-to-r from-cyan-500 to-blue-500">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <div className="flex justify-end w-full z-10 max-w-5xl">
-         <div className="flex space-x-8">
-          <a
-            href="/"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Home
-          </a>
-          <a
-            href="/forum"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Forum
-          </a>
-          <a
-            href="/about"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            About
-          </a>
-          <a
-            href="/login"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Login
-          </a>
-          </div>
-        </div>
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
-        </h2>
-      </div>
-
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-10">
+    <main className="flex min-h-screen flex-col bg-gradient-to-r from-cyan-500 to-blue-500">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-10 p-6 border border-gray-300 rounded-lg bg-white shadow-md">
         <form className="space-y-6" action="#" method="POST">
+        <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-black">
+                Sign in
+            </h2>
           <div className="mb-4">
             <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4"
             >
               Email Address
             </label>
@@ -58,7 +27,6 @@ export default function Login() {
 
           <div className="mb-4">
             <label
-              htmlFor="password"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
               Password
@@ -80,19 +48,18 @@ export default function Login() {
           </div>
 
           <div>
-            <a
-              href="#"
-              className="text-xs text-black
-              -500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            <Link
+              href="/register"
+              className="text-xs text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Create Account
-            </a>
+            </Link>
           </div>
 
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm border border-indigo-600 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Sign in
             </button>

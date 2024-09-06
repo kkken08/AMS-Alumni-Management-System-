@@ -1,36 +1,32 @@
 import Image from "next/image";
+import { AppBar, Typography, Toolbar, Button } from "@mui/material";
+import Link from "next/link";
 
 export default function About() {
   return (
-    <main className="flex min-h-screen flex-col p-24 bg-gradient-to-r from-cyan-500 to-blue-500">
-      <div className="flex justify-end w-full z-10 max-w-5xl">
-        <div className="flex space-x-8">
-          <a
-            href="/"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Home
-          </a>
-          <a
-            href="/forum"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Forum
-          </a>
-          <a
-            href="/about"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            About
-          </a>
-          <a
-            href="/login"
-            className="text-lg font-semibold hover:text-gray-600 text-white"
-          >
-            Login
-          </a>
-        </div>
-      </div>
+    <main className="flex min-h-screen flex-col bg-gradient-to-r from-cyan-500 to-blue-500">
+      <AppBar position="static" className="mb-6">
+        <Toolbar className="flex justify-between">
+          <Typography variant="h6" component="div">
+            Alumni Management System
+          </Typography>
+          <div className="flex space-x-4">
+            <Button variant="contained" color="secondary" component={Link} href="/home">
+              Home
+            </Button>
+            <Button variant="contained" color="secondary" component={Link} href="/news">
+              News
+            </Button>
+            <Button variant="contained" color="secondary" component={Link} href="/about">
+              About
+            </Button>
+            <Button variant="contained" color="secondary" component={Link} href="/login">
+              Logout
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
+
       <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 p-8 flex items-center justify-center">
         <div className="bg-white p-10 rounded-lg shadow-lg max-w-3xl">
           <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
