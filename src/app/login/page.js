@@ -1,7 +1,40 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { TextField, Button, Typography, Box, Container, Paper } from "@mui/material";
 
 export default function Login() {
+  // State for email, password, validation status, and submission attempt
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  const [error, setError] = useState("");
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
+  // Basic validation function
+  const validateInput = () => {
+    return email.includes("@") && password.length > 6;
+  };
+
+  // useEffect to validate form inputs
+  useEffect(() => {
+    const valid = validateInput();
+    setIsValid(valid);
+    // Show error only if the form is invalid and submit has been attempted
+    setError(!valid && submitAttempted ? "Invalid email or password." : "");
+  }, [email, password, submitAttempted]);
+
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitAttempted(true); // Mark that submit has been attempted
+    if (isValid) {
+      console.log("Login successful!");
+      // Further login logic here
+    }
+  };
+
   return (
     <Container 
       component="main" 
@@ -11,24 +44,24 @@ export default function Login() {
         flexDirection: { xs: 'column', md: 'row' }, 
         height: '90vh', 
         alignItems: 'center',
-        justifyContent: 'center', // Center horizontally
-        backgroundColor: '#e3f2fd', // Light blue background color
-        px: { xs: 2, md: 0 }, // Responsive padding
-        py: 4 // Vertical padding
+        justifyContent: 'center', 
+        backgroundColor: '#e3f2fd', 
+        px: { xs: 2, md: 0 }, 
+        py: 4 
       }}
     >
       {/* Image Box */}
       <Box
         sx={{
-          display: { xs: 'none', md: 'flex' }, // Hide on small screens
-          width: '40%', // Adjust width for different screen sizes
-          height: '70%', // Adjust height for different screen sizes
-          backgroundImage: 'url(/bckgrnd3.png)', // Path to your cover image
-          backgroundSize: 'cover', // Ensure the image covers the box
-          backgroundPosition: 'center', // Center the image
-          backgroundRepeat: 'no-repeat', // Prevent image repetition
-          minHeight: '200px', // Ensure minimum height
-          borderRadius: 1, // Optional: rounded corners
+          display: { xs: 'none', md: 'flex' },
+          width: '40%',
+          height: '70%',
+          backgroundImage: 'url(/bckgrnd3.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '200px',
+          borderRadius: 1,
         }}
       />
 
@@ -44,7 +77,7 @@ export default function Login() {
         }}
       >
         <Paper elevation={3} sx={{ width: '100%', maxWidth: 400, p: 4, backgroundColor: '#ffffff' }}>
-          <Box component="form" sx={{ mt: 1 }} action="#" method="POST">
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <Typography 
               component="h1" 
               variant="h5" 
@@ -64,6 +97,8 @@ export default function Login() {
               autoFocus
               variant="outlined"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               sx={{ mb: 3 }}
             />
 
@@ -77,8 +112,16 @@ export default function Login() {
               autoComplete="current-password"
               required
               variant="outlined"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               sx={{ mb: 3 }}
             />
+
+            {error && (
+              <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
+                {error}
+              </Typography>
+            )}
 
             <Typography 
               variant="body2" 
