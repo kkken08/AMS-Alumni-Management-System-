@@ -151,8 +151,8 @@ const App = () => {
               }}
               sx={{ backgroundColor: "white", borderRadius: 1 }}
             />
-            <Button color="inherit" startIcon={<LogoutIcon />}>
-              Logout
+            <Button color="inherit">
+              SWITCH TO HOMEPAGE
             </Button>
           </Toolbar>
         </AppBar>
